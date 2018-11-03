@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'RxOrientation_Example' do
+  pod 'RxOrientation', :path => '../'
+
+  target 'RxOrientation_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
