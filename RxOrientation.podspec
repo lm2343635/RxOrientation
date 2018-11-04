@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'RxOrientation'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of RxOrientation.'
+  s.summary          = 'RxSwift supported for the screen orientation notification.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+  Transform the state of screen orientation notifications into RxSwift Observables.
                        DESC
 
   s.homepage         = 'https://github.com/lm2343635/RxOrientation'
@@ -32,11 +32,6 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'RxOrientation/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'RxOrientation' => ['RxOrientation/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'RxSwift', '~> 4.4'
+  s.dependency 'RxCocoa', '~> 4.4'
 end
