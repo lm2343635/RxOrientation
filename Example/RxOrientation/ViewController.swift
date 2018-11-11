@@ -7,21 +7,25 @@
 //
 
 import UIKit
+import RxSwift
+import RxOrientation
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var orientationLabel: UILabel!
+    @IBOutlet weak var simpleLabel: UILabel!
+    
+    private var viewModel: ViewModel!
+    private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(changeOrientation), name: UIDevice.orientationDidChangeNotification, object: nil)
+        
+        viewModel = ViewModel()
+        
+//        viewModel.orientation.bind(to: orientationLabel.rx.text).disposed(by: disposeBag)
+        viewModel.simple.bind(to: simpleLabel.rx.text).disposed(by: disposeBag)
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
-    }
-    
-    @objc private func changeOrientation() {
-        print("UIDevice.current.orientation = \(UIDevice.current.orientation.rawValue)")
-    }
-
 }
 
