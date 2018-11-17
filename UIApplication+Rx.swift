@@ -1,5 +1,5 @@
 //
-//  UIDevice+Rx.swift
+//  UIApplication+Rx.swift
 //  RxOrientation
 //
 //  Created by Meng Li on 2018/11/12.
@@ -28,36 +28,23 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-extension RxSwift.Reactive where Base: UIDevice {
+extension RxSwift.Reactive where Base: UIApplication {
     
-    public var orientationDidChange: Observable<UIDeviceOrientation> {
-        return NotificationCenter.default.rx.notification(UIDevice.orientationDidChangeNotification).skip(1).map { _ in
-            UIDevice.current.orientation
+    public var statusBarOrientationChanged: Observable<UIInterfaceOrientation> {
+        return NotificationCenter.default.rx.notification(UIApplication.didChangeStatusBarOrientationNotification).map { _ in
+            UIApplication.shared.statusBarOrientation
         }.distinctUntilChanged()
     }
     
     public var isPortrait: Observable<Bool> {
-        return orientationDidChange.map {
+        return statusBarOrientationChanged.map {
             $0.isPortrait
         }.distinctUntilChanged()
     }
     
     public var isLandscape: Observable<Bool> {
-        return orientationDidChange.map {
+        return statusBarOrientationChanged.map {
             $0.isLandscape
         }.distinctUntilChanged()
     }
-    
-    public var isFlat: Observable<Bool> {
-        return orientationDidChange.map {
-            $0.isFlat
-        }.distinctUntilChanged()
-    }
-    
-    public var isValidInterfaceOrientation: Observable<Bool> {
-        return orientationDidChange.map {
-            $0.isValidInterfaceOrientation
-        }.distinctUntilChanged()
-    }
-    
 }

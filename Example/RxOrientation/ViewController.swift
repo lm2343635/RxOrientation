@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         
         viewModel = ViewModel()
         
-//        viewModel.orientation.bind(to: orientationLabel.rx.text).disposed(by: disposeBag)
+        viewModel.orientation.bind(to: orientationLabel.rx.text).disposed(by: disposeBag)
         viewModel.simple.bind(to: simpleLabel.rx.text).disposed(by: disposeBag)
     }
     

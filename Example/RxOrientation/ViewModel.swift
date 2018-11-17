@@ -12,24 +12,9 @@ class ViewModel {
     
     private let disposeBag = DisposeBag()
     
-//    let orientation: Observable<String> = UIDevice.current.rx.orientationDidChange.map { orientation in
-//        switch orientation {
-//        case .unknown:
-//            return "unknown"
-//        case .portrait:
-//            return "portrait"
-//        case .portraitUpsideDown:
-//            return "portraitUpsideDown"
-//        case .landscapeLeft:
-//            return "landscapeLeft"
-//        case .landscapeRight:
-//            return "landscapeRight"
-//        case .faceUp:
-//            return "faceUp"
-//        case .faceDown:
-//            return "faceDown"
-//        }
-//    }
+    let orientation: Observable<String> = UIDevice.current.rx.orientationDidChange.map {
+        $0.description
+    }
     
     let simple: Observable<String> = UIDevice.current.rx.isPortrait.map {
         return $0 ? "portrait" : "landscape"
