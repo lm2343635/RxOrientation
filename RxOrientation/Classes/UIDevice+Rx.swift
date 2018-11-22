@@ -30,32 +30,32 @@ import RxCocoa
 
 extension RxSwift.Reactive where Base: UIDevice {
     
-    public var orientationDidChange: Observable<UIDeviceOrientation> {
+    public var orientation: Observable<UIDeviceOrientation> {
         return NotificationCenter.default.rx.notification(UIDevice.orientationDidChangeNotification).skip(1).map { _ in
             UIDevice.current.orientation
         }.distinctUntilChanged()
     }
     
     public var isPortrait: Observable<Bool> {
-        return orientationDidChange.map {
+        return orientation.map {
             $0.isPortrait
         }.distinctUntilChanged()
     }
     
     public var isLandscape: Observable<Bool> {
-        return orientationDidChange.map {
+        return orientation.map {
             $0.isLandscape
         }.distinctUntilChanged()
     }
     
     public var isFlat: Observable<Bool> {
-        return orientationDidChange.map {
+        return orientation.map {
             $0.isFlat
         }.distinctUntilChanged()
     }
     
     public var isValidInterfaceOrientation: Observable<Bool> {
-        return orientationDidChange.map {
+        return orientation.map {
             $0.isValidInterfaceOrientation
         }.distinctUntilChanged()
     }

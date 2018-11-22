@@ -30,20 +30,20 @@ import RxCocoa
 
 extension RxSwift.Reactive where Base: UIApplication {
     
-    public var statusBarOrientationChanged: Observable<UIInterfaceOrientation> {
+    public var statusBarOrientation: Observable<UIInterfaceOrientation> {
         return NotificationCenter.default.rx.notification(UIApplication.didChangeStatusBarOrientationNotification).map { _ in
             UIApplication.shared.statusBarOrientation
         }.distinctUntilChanged()
     }
     
     public var isPortrait: Observable<Bool> {
-        return statusBarOrientationChanged.map {
+        return statusBarOrientation.map {
             $0.isPortrait
         }.distinctUntilChanged()
     }
     
     public var isLandscape: Observable<Bool> {
-        return statusBarOrientationChanged.map {
+        return statusBarOrientation.map {
             $0.isLandscape
         }.distinctUntilChanged()
     }
