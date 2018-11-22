@@ -5,11 +5,11 @@
 [![License](https://img.shields.io/cocoapods/l/RxOrientation.svg?style=flat)](https://cocoapods.org/pods/RxOrientation)
 [![Platform](https://img.shields.io/cocoapods/p/RxOrientation.svg?style=flat)](https://cocoapods.org/pods/RxOrientation)
 
+RxOrientation is a screen orientation notification extension for RxSwift, which transforms the state of screen orientation notifications into RxSwift Observables.
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
 
 ## Installation
 
@@ -18,6 +18,14 @@ it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'RxOrientation'
+```
+
+In your view model class or view controller class, using `UIDevice.current.rx.orientation` to get the current device orientaion and `UIApplication.shared.rx.statusBarOrientation` to get the status bar orientaion.
+
+```Swift
+UIApplication.shared.rx.statusBarOrientation.subscribe(onNext: { orientaion in
+	// ...
+}).disposed(by: disposeBag)
 ```
 
 ## Author
