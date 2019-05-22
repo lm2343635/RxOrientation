@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RxOrientation'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'Screen orientation notification extension for RxSwift.'
 
   s.description      = <<-DESC
@@ -23,6 +23,6 @@ RxOrientation is a screen orientation notification extension for RxSwift, which 
   s.ios.deployment_target = '8.0'
   s.source_files = 'RxOrientation/Classes/**/*'
   
-  s.dependency 'RxSwift', '~> 4.4'
-  s.dependency 'RxCocoa', '~> 4.4'
+  s.dependency 'RxSwift', '~> 5'
+  s.dependency 'RxCocoa', '~> 5'
 end
