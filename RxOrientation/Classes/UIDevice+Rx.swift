@@ -31,7 +31,7 @@ import RxCocoa
 extension RxSwift.Reactive where Base: UIDevice {
     
     public var orientation: Observable<UIDeviceOrientation> {
-        return NotificationCenter.default.rx.notification(UIDevice.orientationDidChangeNotification).skip(1).map { _ in
+        return NotificationCenter.default.rx.notification(UIDevice.orientationDidChangeNotification).map { _ in
             UIDevice.current.orientation
         }.distinctUntilChanged()
     }
