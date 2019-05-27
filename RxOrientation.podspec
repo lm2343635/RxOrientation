@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RxOrientation'
-  s.version          = '0.1.2'
+  s.version          = '0.1.3'
   s.summary          = 'Screen orientation notification extension for RxSwift.'
 
   s.description      = <<-DESC
